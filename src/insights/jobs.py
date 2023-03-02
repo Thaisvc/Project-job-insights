@@ -4,7 +4,6 @@ import csv
 
 
 @lru_cache
-# https://docs.python.org/pt-br/3/library/csv.html?highlight=dictreader#csv.DictReader
 def read(path: str) -> List[Dict]:
     with open(path) as csv_file:
         jobs_csv = csv.DictReader(csv_file, delimiter=",")
@@ -16,7 +15,6 @@ def read(path: str) -> List[Dict]:
 
 def get_unique_job_types(path: str) -> List[str]:
     jobs = read(path)
-    # ou set([job["job_type"] for job in file])
     job_type_list = set()
     for type in jobs:
         job_type_list.add(type["job_type"])
