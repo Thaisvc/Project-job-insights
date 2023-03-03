@@ -5,12 +5,16 @@ from src.insights.jobs import read
 def get_max_salary(path: str) -> int:
     list_jobs = read(path)
     salaries = set(
-        [job["max_salary"] for job in list_jobs
-         # https://www.w3schools.com/python/ref_string_isdigit.asp
-         # https://www.w3schools.com/python/ref_func_int.asp
-         if job["max_salary"].isdigit()]
-        )
+        [
+            job["max_salary"]
+            for job in list_jobs
+            # https://www.w3schools.com/python/ref_string_isdigit.asp
+            # https://www.w3schools.com/python/ref_func_int.asp
+            if job["max_salary"].isdigit()
+        ]
+    )
     salaries = (int(salary) for salary in salaries)
+    return max(salaries)
 
 
 def get_min_salary(path: str) -> int:
